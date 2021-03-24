@@ -1,0 +1,8 @@
+{
+    "name": "createContact",
+    "label": "create contact",
+    "description": "automates contact creation into DT",
+    "connection": "disciple-tools-v3-681900",
+    "webhook": null,
+    "type": "action"
+}

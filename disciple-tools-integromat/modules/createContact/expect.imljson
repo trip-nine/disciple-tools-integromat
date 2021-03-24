@@ -1,0 +1,28 @@
+[
+    {
+        "name": "title",
+        "type": "text",
+        "label": "Name",
+        "required": true
+    },
+    {
+        "name": "phoneNumber",
+        "type": "text",
+        "label": "Phone Number"
+    },
+    {
+        "name": "location",
+        "type": "text",
+        "label": "Location"
+    },
+    {
+        "name": "source",
+        "type": "text",
+        "label": "Campaign Source"
+    },
+    {
+        "name": "sourceCity",
+        "type": "text",
+        "label": "City from Facebook Leads"
+    }
+]

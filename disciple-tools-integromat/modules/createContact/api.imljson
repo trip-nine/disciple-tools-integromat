@@ -1,0 +1,32 @@
+{
+    "url": "{{connection.clientUrl}}/wp-json/dt-posts/v2/contacts/",
+    "method": "POST",
+    "body": {
+        "title": "{{parameters.title}}",
+        "contact_phone": [
+            {
+                "value": "{{parameters.phoneNumber}}"
+            }
+        ],
+        "location_grid": {
+            "values": [
+                {
+                    "value": "{{parameters.location}}"
+                }
+            ]
+        },
+        "sources": {
+            "values": [
+                {
+                    "value": "{{parameters.source}}"
+                },
+                {
+                    "value": "{{parameters.sourceCity}}"
+                }
+            ]
+        }
+    },
+    "response": {
+        "output": "{{body}}"
+    }
+}

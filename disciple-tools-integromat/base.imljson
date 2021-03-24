@@ -1,0 +1,15 @@
+{
+    "headers": {
+        "authorization": "Bearer {{connection.accessToken}}"
+    },
+    "response": {
+        "error": {
+            "message": "[{{statusCode}}] {{body.message}}"
+        }
+    },
+    "log": {
+        "sanitize": [
+            "request.headers.authorization"
+        ]
+    }
+}
