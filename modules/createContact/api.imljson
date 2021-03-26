@@ -27,6 +27,7 @@
         }
     },
     "response": {
+        "error": "[{{statusCode}}] {{body.message}}",
         "output": "{{body}}"
     }
 }

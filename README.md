@@ -1,5 +1,3 @@
-# disciple-tools-integromat
-
 Disciple Tools Integromat App
 Version 1.0
 Released 3/22/21

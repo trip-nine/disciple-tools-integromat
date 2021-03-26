@@ -13,7 +13,7 @@
     {
         "name": "location",
         "type": "text",
-        "label": "Location"
+        "label": "DT Location Code"
     },
     {
         "name": "source",
@@ -23,6 +23,6 @@
     {
         "name": "sourceCity",
         "type": "text",
-        "label": "City from Facebook Leads"
+        "label": "City Location from Contact"
     }
 ]
