@@ -1,0 +1,77 @@
+{
+    "authorize": {
+        "qs": {
+            "scope": "{{join(oauth.scope, ' ')}}",
+            "client_id": "{{parameters.clientId}}",
+            "redirect_uri": "{{oauth.redirectUri}}",
+            "response_type": "code"
+        },
+        "url": "{{parameters.clientUrl}}/oauth/authorize",
+        "response": {
+            "temp": {
+                "code": "{{query.code}}"
+            }
+        }
+    },
+    "token": {
+        "url": "{{parameters.clientUrl}}/oauth/token",
+        "body": {
+            "code": "{{temp.code}}",
+            "client_id": "{{parameters.clientId}}",
+            "grant_type": "authorization_code",
+            "redirect_uri": "{{oauth.redirectUri}}",
+            "client_secret": "{{parameters.clientSecret}}"
+        },
+        "type": "urlencoded",
+        "method": "POST",
+        "response": {
+            "data": {
+                "accessToken": "{{body.access_token}}",
+                "refreshToken": "{{body.refresh_token}}",
+                "expires": "{{body.expires_in}}"
+            }
+        },
+        "log": {
+            "sanitize": [
+                "request.body.code",
+                "request.body.client_secret",
+                "response.body.access_token",
+                "response.body.refresh_token"
+            ]
+        }
+    },
+    "refresh": {
+        "condition": "{{data.expires < addMinutes(now, 15)}}",
+        "url": "{{parameters.clientUrl}}/oauth/token",
+        "body": {
+            "grant_type": "refresh_token",
+            "refresh_token": "{{data.refreshToken}}",
+            "client_id": "{{parameters.clientId}}",
+            "client_secret": "{{parameters.clientSecret}}"
+        },
+        "type": "urlencoded",
+        "method": "POST",
+        "response": {
+            "data": {
+                "accessToken": "{{body.access_token}}",
+                "refreshToken": "{{body.refresh_token}}",
+                "expires": "{{body.expires_in}}"
+            }
+        },
+        "log": {
+            "sanitize": [
+                "request.body.client_secret",
+                "request.body.refresh_token",
+                "response.body.access_token",
+                "response.body.refresh_token"
+            ]
+        }
+    },
+    "info": {
+        "url": "{{parameters.clientUrl}}/oauth/me",
+        "headers": {
+            "authorization": "Bearer {{data.accessToken}}"
+        },
+        "response": {}
+    }
+}
